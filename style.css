@@ -221,9 +221,13 @@ nav a::after {
 }
 nav a:hover::after { width: 100%; }
 
-/* Acciones header */
+/* Acciones header (botón modo claro/oscuro + hamburguesa)
+   FIX: antes tenía display:none por defecto y solo aparecía
+   en mobile -> el botón de modo no se veía ni funcionaba en desktop.
+   Ahora es visible siempre; la hamburguesa se sigue ocultando
+   en desktop por separado (ver .menu-hamburguesa). */
 .header-acciones {
-    display: none;
+    display: flex;
     align-items: center;
     gap: 12px;
 }
@@ -238,7 +242,7 @@ nav a:hover::after { width: 100%; }
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background var(--trans), border-color var(--trans), transform var(--trans);
+    transition: background var(--trans), border-color var(--trans), transform var(--trans), color var(--trans);
 }
 .modo-btn:hover {
     background: rgba(212, 175, 128, 0.12);
@@ -702,6 +706,130 @@ nav a:hover::after { width: 100%; }
 .skill-card li:last-child { border-bottom: none; }
 
 /* =====================================================
+   PROYECTOS (nueva sección)
+   ===================================================== */
+
+.proy-seccion { background: var(--navy); }
+
+.proy-grupo {
+    max-width: var(--max-w);
+    margin: 0 auto 50px;
+}
+.proy-grupo:last-child { margin-bottom: 0; }
+
+.proy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 22px;
+}
+
+.proy-card {
+    background: var(--navy-3);
+    border-radius: var(--radio);
+    overflow: hidden;
+    border: 1px solid var(--navy-borde);
+    border-top: 2px solid rgba(212, 175, 128, 0.2);
+    box-shadow: var(--sombra);
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--trans), border-top-color var(--trans), box-shadow var(--trans);
+}
+.proy-card:hover {
+    transform: translateY(-5px);
+    border-top-color: var(--gold);
+    box-shadow: var(--sombra-hover);
+}
+
+/* Captura de pantalla del proyecto */
+.proy-imagen {
+    display: block;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--navy-2);
+    border-bottom: 1px solid var(--navy-borde);
+}
+.proy-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.5s ease;
+}
+.proy-card:hover .proy-imagen img {
+    transform: scale(1.06);
+}
+.proy-imagen::after {
+    content: "\f35d"; /* fa-arrow-up-right-from-square */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(13, 27, 42, 0.65);
+    color: var(--gold-claro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity var(--trans), transform var(--trans);
+}
+.proy-card:hover .proy-imagen::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.proy-card-body {
+    padding: 22px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.proy-icono {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: rgba(212, 175, 128, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--gold);
+    margin-bottom: 16px;
+}
+.proy-card h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--texto-claro);
+    margin-bottom: 8px;
+}
+.proy-card p {
+    font-size: 0.87rem;
+    color: var(--texto-medio);
+    line-height: 1.6;
+    margin-bottom: 18px;
+    flex: 1;
+}
+.proy-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 0.87rem;
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--trans), color var(--trans);
+    align-self: flex-start;
+}
+.proy-link:hover { border-color: var(--gold); }
+
+/* =====================================================
    ESTUDIOS
    ===================================================== */
 
@@ -829,6 +957,17 @@ nav a:hover::after { width: 100%; }
     border: 1px solid rgba(212, 175, 128, 0.25);
     padding: 3px 10px;
     border-radius: 20px;
+}
+
+/* Imágenes clickeables (certificaciones y diplomas) -> abren lightbox */
+.cert-card img,
+.edu-card img {
+    cursor: zoom-in;
+    transition: opacity var(--trans);
+}
+.cert-card img:hover,
+.edu-card img:hover {
+    opacity: 0.82;
 }
 
 .carousel-btn {
@@ -1184,6 +1323,55 @@ footer {
 .btn-top:hover { transform: translateY(-3px); }
 
 /* =====================================================
+   LIGHTBOX (ver imagen de certificación/diploma completa)
+   ===================================================== */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0, 0, 0, 0.88);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    opacity: 0;
+    transition: opacity var(--trans);
+}
+.lightbox.activo {
+    display: flex;
+    opacity: 1;
+}
+.lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    cursor: default;
+}
+.lightbox-cerrar {
+    position: absolute;
+    top: 22px;
+    right: 26px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(212, 175, 128, 0.15);
+    border: 1px solid rgba(212, 175, 128, 0.35);
+    color: var(--gold);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--trans), transform var(--trans);
+}
+.lightbox-cerrar:hover {
+    background: rgba(212, 175, 128, 0.3);
+    transform: rotate(90deg);
+}
+
+/* =====================================================
    MODO CLARO
    ===================================================== */
 
@@ -1210,11 +1398,13 @@ body.modo-claro .stat-num { color: #8A5A2A; }
 body.modo-claro nav a { color: #5A6A7A; }
 body.modo-claro nav a:hover { color: #8A5A2A; }
 body.modo-claro .menu-hamburguesa span { background: #1C2B3A; }
+body.modo-claro .modo-btn { color: #1C2B3A; }
 body.modo-claro .hero::before { opacity: 0.2; }
 body.modo-claro .tl-body h3,
 body.modo-claro .cert-card h4,
 body.modo-claro .skill-card h3,
-body.modo-claro .edu-info h4 { color: #1C2B3A; }
+body.modo-claro .edu-info h4,
+body.modo-claro .proy-card h4 { color: #1C2B3A; }
 body.modo-claro .form-grupo input,
 body.modo-claro .form-grupo textarea { background: #EDE7DC; color: #1C2B3A; }
 body.modo-claro .footer-logo { color: #5A6A7A; }
@@ -1222,7 +1412,7 @@ body.modo-claro .footer-logo { color: #5A6A7A; }
 /* Transición entre modos */
 body, header, .tl-body, .skill-card, .edu-card,
 .cert-card, .form-contacto, .contacto-panel,
-.idioma-item, footer {
+.idioma-item, .proy-card, footer {
     transition:
         background-color 0.4s ease,
         color 0.35s ease,
@@ -1251,7 +1441,6 @@ body, header, .tl-body, .skill-card, .edu-card,
 /* ≤768px */
 @media (max-width: 768px) {
 
-    .header-acciones { display: flex; }
     .menu-hamburguesa { display: flex; }
 
     nav {
@@ -1292,6 +1481,9 @@ body, header, .tl-body, .skill-card, .edu-card,
     }
 
     .btn-top { bottom: 18px; right: 18px; }
+
+    .lightbox { padding: 20px; }
+    .lightbox-cerrar { top: 14px; right: 14px; }
 }
 
 /* ≤480px */
@@ -1307,4 +1499,5 @@ body, header, .tl-body, .skill-card, .edu-card,
     .btn-dorado, .btn-outline { width: 100%; justify-content: center; }
     .form-contacto { padding: 22px; }
     .skill-grid { grid-template-columns: 1fr; }
+    .proy-grid { grid-template-columns: 1fr; }
 }

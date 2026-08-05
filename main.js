@@ -8,6 +8,7 @@
    6. Botón volver arriba
    7. Carousel de certificaciones
    8. Header scroll effect
+   9. Lightbox de imágenes (certificaciones / diplomas)
    ===================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -50,6 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
     /* =====================================================
        2. MODO CLARO / OSCURO
        El diseño BASE es oscuro. El botón activa modo claro.
+       FIX: el botón ahora es visible tanto en desktop como en
+       mobile (antes estaba oculto en desktop por CSS), por lo
+       que el clic ya cambia el tema en ambos casos.
        ===================================================== */
 
     const modoBtn   = document.getElementById('modoOscuroBtn');
@@ -79,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
        ===================================================== */
 
     const elementos = document.querySelectorAll(
-        'section, .tl-card, .skill-card, .edu-card, .cert-card, .idioma-item'
+        'section, .tl-card, .skill-card, .edu-card, .cert-card, .idioma-item, .proy-card'
     );
     elementos.forEach(el => el.classList.add('reveal'));
 
@@ -283,5 +287,47 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         header?.classList.toggle('scrolled', window.scrollY > 30);
     }, { passive: true });
+
+
+    /* =====================================================
+       9. LIGHTBOX DE IMÁGENES (certificaciones y diplomas)
+       Al hacer click en una imagen del carrusel de certificados
+       o de las tarjetas de educación, se abre en un modal a
+       pantalla completa dentro de la misma página.
+       ===================================================== */
+
+    const lightbox        = document.getElementById('lightbox');
+    const lightboxImg      = document.getElementById('lightboxImg');
+    const lightboxCerrar   = document.getElementById('lightboxCerrar');
+    const imgsClickeables  = document.querySelectorAll('.cert-card img, .edu-card img');
+
+    function abrirLightbox(src, alt) {
+        if (!lightbox || !lightboxImg) return;
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || '';
+        lightbox.classList.add('activo');
+        body.style.overflow = 'hidden';
+    }
+
+    function cerrarLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.remove('activo');
+        body.style.overflow = '';
+    }
+
+    imgsClickeables.forEach(img => {
+        img.addEventListener('click', () => abrirLightbox(img.src, img.alt));
+    });
+
+    lightboxCerrar?.addEventListener('click', cerrarLightbox);
+
+    // Cierra al hacer click fuera de la imagen (en el fondo oscuro)
+    lightbox?.addEventListener('click', e => {
+        if (e.target === lightbox) cerrarLightbox();
+    });
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') cerrarLightbox();
+    });
 
 });
