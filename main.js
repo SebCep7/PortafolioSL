@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape') toggleMenu(false);
     });
     window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) toggleMenu(false);
+        if (window.innerWidth > 1024) toggleMenu(false);
     });
 
 

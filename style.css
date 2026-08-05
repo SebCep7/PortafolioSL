@@ -50,6 +50,7 @@
 }
 
 html {
+    overflow-x: hidden;
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
     font-size: 16px;
@@ -1423,7 +1424,12 @@ body, header, .tl-body, .skill-card, .edu-card,
    RESPONSIVE
    ===================================================== */
 
-/* ≤1024px */
+/* ≤1024px
+   El nav pasa a menú hamburguesa acá mismo (antes pasaba a los
+   768px, pero el nav ya tiene 6 links y entre 769-1024px no
+   entraba completo: se desbordaba y "empujaba"/rompía el resto
+   del layout, incluida la sección de certificaciones/estudios).
+   Unificando el breakpoint se soluciona ambos problemas juntos. */
 @media (max-width: 1024px) {
     .hero-inner {
         grid-template-columns: 1fr;
@@ -1435,11 +1441,7 @@ body, header, .tl-body, .skill-card, .edu-card,
     .hero-tags { justify-content: center; }
     .hero-btns { justify-content: center; }
     .hero-stats { justify-content: center; }
-    .estudios-layout { grid-template-columns: 1fr; }
-}
-
-/* ≤768px */
-@media (max-width: 768px) {
+    .estudios-layout { grid-template-columns: 1fr; gap: 40px; }
 
     .menu-hamburguesa { display: flex; }
 
@@ -1456,10 +1458,15 @@ body, header, .tl-body, .skill-card, .edu-card,
         border-left: 1px solid var(--navy-borde);
         box-shadow: -8px 0 30px rgba(0,0,0,.4);
         transition: right var(--trans);
+        overflow-y: auto;
     }
     nav.activo { right: 0; }
     nav ul { flex-direction: column; align-items: flex-start; gap: 1.6rem; }
     nav a { font-size: 1rem; }
+}
+
+/* ≤768px */
+@media (max-width: 768px) {
 
     .seccion { padding: 70px 6%; }
     .hero { padding: 70px 6%; }
@@ -1471,8 +1478,12 @@ body, header, .tl-body, .skill-card, .edu-card,
     .contacto-layout { flex-direction: column; }
     .contacto-panel { flex: 1 1 auto; width: 100%; }
 
+    .estudios-layout { gap: 34px; }
     .carousel-btn--prev { left: -10px; }
     .carousel-btn--next { right: -10px; }
+    .cert-card { padding: 18px; }
+    .cert-card img { height: 190px; }
+    .idiomas-grid { grid-template-columns: 1fr; }
 
     .footer-inner {
         flex-direction: column;
@@ -1500,4 +1511,11 @@ body, header, .tl-body, .skill-card, .edu-card,
     .form-contacto { padding: 22px; }
     .skill-grid { grid-template-columns: 1fr; }
     .proy-grid { grid-template-columns: 1fr; }
+
+    .edu-card { flex-direction: column; align-items: flex-start; text-align: left; }
+    .edu-card img { width: 100%; height: 140px; }
+    .cert-card img { height: 160px; }
+    .carousel-btn { width: 32px; height: 32px; font-size: 0.75rem; }
+    .carousel-btn--prev { left: -6px; }
+    .carousel-btn--next { right: -6px; }
 }
