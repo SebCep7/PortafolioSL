@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio profesional de Sebastián Loitegui — Analista Administrativo, Análisis de Datos y Desarrollo Web en Buenos Aires, Argentina.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Sebastián Loitegui | Portafolio Profesional</title>
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header id="header">
+        <div class="header-inner">
+
+            <h1>
+                <a href="index.html" class="logo">
+                    <span class="logo-siglas">SL</span>
+                    <span class="logo-barra">|</span>
+                    <span class="logo-texto">Portafolio</span>
+                </a>
+            </h1>
+
+            <nav aria-label="Navegación principal" id="navPrincipal">
+                <ul>
+                    <li><a href="#quiensoy">Quién soy</a></li>
+                    <li><a href="#experiencia">Experiencia</a></li>
+                    <li><a href="#habilidades">Habilidades</a></li>
+                    <li><a href="#estudios">Estudios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-acciones">
+                <button id="modoOscuroBtn" class="modo-btn" aria-label="Cambiar modo">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+                <button id="menuHamburguesa" class="menu-hamburguesa" aria-label="Abrir menú" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="overlay-menu" id="overlayMenu"></div>
+
+    <!-- ===== MAIN ===== -->
+    <main>
+
+        <!-- QUIÉN SOY -->
+        <section class="hero" id="quiensoy">
+
+            <img src="img/Fondo-abstracto.png" alt="" class="fondo-abstracto" aria-hidden="true">
+
+            <div class="hero-inner">
+
+                <div class="hero-foto">
+                    <div class="foto-marco">
+                        <img src="img/Sebi1.png" alt="Foto de Sebastián Loitegui" class="foto-perfil">
+                    </div>
+                </div>
+
+                <div class="hero-info">
+
+                    <p class="hero-eyebrow">Portafolio Profesional</p>
+                    <h2 class="hero-nombre">Sebastián Loitegui</h2>
+                    <p class="hero-subtitulo">Analista Administrativo &nbsp;·&nbsp; Datos &nbsp;·&nbsp; Desarrollo Web &nbsp;·&nbsp; Marketing Digital</p>
+
+                    <div class="hero-tags">
+                        <span><i class="fa-solid fa-location-dot"></i> Buenos Aires</span>
+                        <span><i class="fa-solid fa-chart-bar"></i> Análisis de Datos</span>
+                        <span><i class="fa-solid fa-briefcase"></i> Administración</span>
+                        <span><i class="fa-solid fa-code"></i> Desarrollo Web</span>
+                        <span><i class="fa-solid fa-chart-line"></i> Marketing Digital</span>
+                    </div>
+
+                    <p class="hero-p">
+                        Profesional con experiencia en administración, operaciones y asesoría impositiva.
+                        Trabajé en <strong>Banco Galicia</strong>, <strong>YPF</strong> e <strong>ID Logistics</strong>,
+                        aplicando un perfil analítico orientado a la optimización de procesos y mejora continua.
+                    </p>
+                    <p class="hero-p">
+                        Soy hipoacúsico desde los 2 años — experiencia que me enseñó perseverancia, adaptación y
+                        resiliencia. Actualmente amplío mis conocimientos en <strong>desarrollo web</strong> y
+                        <strong>análisis de datos</strong>.
+                    </p>
+
+                    <div class="hero-stats" id="statsContainer">
+                        <div class="stat">
+                            <span class="stat-num" data-target="5">5</span>
+                            <span class="stat-label">Empresas</span>
+                        </div>
+                        <div class="stat-sep"></div>
+                        <div class="stat">
+                            <span class="stat-num" data-target="8">8</span>
+                            <span class="stat-label">Años exp.</span>
+                        </div>
+                        <div class="stat-sep"></div>
+                        <div class="stat">
+                            <span class="stat-num" data-target="3">3</span>
+                            <span class="stat-label">Áreas</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-btns">
+                        <a href="./assets/cv/(CV) Sebastian Loitegui (2).pdf" download target="_blank" class="btn-dorado">
+                            <i class="fa-solid fa-download"></i> Descargar CV
+                        </a>
+                        <a href="#contacto" class="btn-outline">
+                            <i class="fa-solid fa-paper-plane"></i> Contactame
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- EXPERIENCIA -->
+        <section class="seccion exp-seccion" id="experiencia">
+
+            <div class="sec-header">
+                <span class="sec-eyebrow">Trayectoria</span>
+                <h2>Experiencia Profesional</h2>
+                <p class="sec-desc">Más de 8 años en empresas líderes de Argentina, con foco en operaciones, análisis y gestión administrativa.</p>
+            </div>
+
+            <div class="timeline">
+
+                <article class="tl-card">
+                    <div class="tl-linea"><div class="tl-dot"></div></div>
+                    <div class="tl-body">
+                        <div class="tl-top">
+                            <div>
+                                <h3>Banco Galicia</h3>
+                                <h4>Analista Administrativo | Asesoría Impositiva</h4>
+                            </div>
+                            <span class="tl-badge">2024 – 2025</span>
+                        </div>
+                        <ul>
+                            <li>Gestión y análisis de devoluciones impositivas.</li>
+                            <li>Resolución de reclamos — reducción del <strong>50%</strong> en tiempos.</li>
+                            <li>Excel · Google Sheets · Outlook · Teams · Smart · BC10.</li>
+                        </ul>
+                    </div>
+                </article>
+                
+
+                
+                <article class="tl-card">
+                    <div class="tl-linea"><div class="tl-dot"></div></div>
+                    <div class="tl-body">
+                        <div class="tl-top">
+                            <div>
+                                <h3>ID Logistics</h3>
+                                <h4>Analista de Operaciones</h4>
+                            </div>
+                            <span class="tl-badge">2021 – 2023</span>
+                        </div>
+                        <ul>
+                            <li>Control operativo de entradas y salidas de mercadería.</li>
+                            <li>Análisis de errores logísticos y gestión de incidencias.</li>
+                            <li>Coordinación interdepartamental para mejora de procesos.</li>
+                            <li>AS400 · Smartsheet · Google Sheets · Excel · Outlook.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="tl-card">
+                    <div class="tl-linea"><div class="tl-dot"></div></div>
+                    <div class="tl-body">
+                        <div class="tl-top">
+                            <div>
+                                <h3>YPF</h3>
+                                <h4>Administrativo de Créditos y Cobranzas</h4>
+                            </div>
+                            <span class="tl-badge">2018 – 2019</span>
+                        </div>
+                        <ul>
+                            <li>Gestión de límites de riesgo crediticio.</li>
+                            <li>Implementación de más de <strong>30 reportes</strong> automatizados.</li>
+                            <li>SAP · Google Sheets · Excel · Outlook · Solsys.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                                
+                                <article class="tl-card">
+                                    <div class="tl-linea"><div class="tl-dot"></div></div>
+                                    <div class="tl-body">
+                                        <div class="tl-top">
+                                            <div>
+                                                <h3>LOME VR</h3>
+                                                <h4>Fundador — Emprendimiento de Realidad Virtual</h4>
+                                            </div>
+                                            <span class="tl-badge tl-badge">2025 – 2026</span>
+                                        </div>
+                                        <ul>
+                                            <li>Gestión administrativa, financiera y operativa.</li>
+                                            <li>Control de costos, presupuestos y análisis financiero.</li>
+                                            <li>Estrategia de marketing digital y redes sociales.</li>
+                                        </ul>
+                                    </div>
+                                </article>
+
+                <article class="tl-card">
+                    <div class="tl-linea"><div class="tl-dot"></div></div>
+                    <div class="tl-body">
+                        <div class="tl-top">
+                            <div>
+                                <h3>Loi Suites Hoteles</h3>
+                                <h4>Recepcionista y Botones</h4>
+                            </div>
+                            <span class="tl-badge">2014 – 2015</span>
+                        </div>
+                        <ul>
+                            <li>Atención y recepción de huéspedes.</li>
+                            <li>Gestión de reservas, check-in y check-out.</li>
+                            <li>Coordinación de equipajes y asistencia al huésped.</li>
+                        </ul>
+                    </div>
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- HABILIDADES -->
+        <section class="seccion hab-seccion" id="habilidades">
+
+            <div class="sec-header">
+                <span class="sec-eyebrow">Competencias</span>
+                <h2>Habilidades</h2>
+            </div>
+
+            <div class="skill-grid">
+
+                <div class="skill-card">
+                    <div class="skill-icono"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h3>Tecnología</h3>
+                    <ul>
+                        <li>Excel Avanzado</li>
+                        <li>Google Sheets</li>
+                        <li>SAP · AS400</li>
+                        <li>Outlook · Teams</li>
+                        <li>HTML · CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icono"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3>Análisis y Gestión</h3>
+                    <ul>
+                        <li>Análisis de Datos</li>
+                        <li>Gestión Administrativa</li>
+                        <li>Gestión Documental</li>
+                        <li>Elaboración de Reportes</li>
+                        <li>Resolución de Reclamos</li>
+                        <li>Mejora Continua</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icono"><i class="fa-solid fa-handshake"></i></div>
+                    <h3>Profesionales</h3>
+                    <ul>
+                        <li>Atención al Cliente</li>
+                        <li>Trabajo en Equipo</li>
+                        <li>Comunicación Efectiva</li>
+                        <li>Adaptabilidad</li>
+                        <li>Resiliencia</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card skill-card--gold">
+                    <div class="skill-icono"><i class="fa-solid fa-rocket"></i></div>
+                    <h3>En Desarrollo</h3>
+                    <ul>
+                        <li>React</li>
+                        <li>Power BI</li>
+                        <li>Git · GitHub</li>
+                        <li>E-commerce</li>
+                        <li>Diseño Responsive</li>
+                        <li>Node.js</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ESTUDIOS -->
+        <section class="seccion est-seccion" id="estudios">
+
+            <div class="sec-header">
+                <span class="sec-eyebrow">Formación académica</span>
+                <h2>Educación y Certificaciones</h2>
+            </div>
+
+            <div class="estudios-layout">
+
+                <div class="edu-bloque">
+                    <h3 class="bloque-titulo"><i class="fa-solid fa-graduation-cap"></i> Educación</h3>
+                    <div class="edu-grid">
+
+                        <div class="edu-card">
+                            <img src="img/marketingd.png" alt="Máster en Marketing Digital — IEM Business School">
+                            <div class="edu-info">
+                                <h4>Máster en Marketing Digital</h4>
+                                <p>IEM Business School</p>
+                                <span class="edu-anio">2023 – 2024</span>
+                            </div>
+                        </div>
+
+                        <div class="edu-card">
+                            <img src="img/hoteleria.jpeg" alt="Técnico Superior en Hotelería — OTT Educación Superior">
+                            <div class="edu-info">
+                                <h4>Técnico Superior en Hotelería</h4>
+                                <p>OTT Educación Superior</p>
+                                <span class="edu-anio">2014 – 2020</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="cert-bloque">
+                    <h3 class="bloque-titulo"><i class="fa-solid fa-trophy"></i> Certificaciones</h3>
+
+                    <div class="carousel" role="region" aria-label="Carrusel de certificaciones">
+                        <div class="carousel-track-wrapper">
+                            <div class="carousel-track" id="carouselTrack">
+
+                                <div class="carousel-slide">
+                                    <div class="cert-card">
+                                        <img src="img/diploma-adm.png" alt="Diploma Administración de Empresas — Coderhouse">
+                                        <h4>Administración de Empresas</h4>
+                                        <p>Coderhouse · 2026</p>
+                                        <span class="cert-badge">Cursando</span>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-slide">
+                                    <div class="cert-card">
+                                        <img src="img/Proceso diploma.png" alt="Diploma Desarrollo Web — Coderhouse">
+                                        <h4>Desarrollo Web</h4>
+                                        <p>Coderhouse · 2026</p>
+                                        <span class="cert-badge">Cursando</span>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-slide">
+                                    <div class="cert-card">
+                                        <img src="img/Proceso diploma.png" alt="Diploma Análisis de Datos — Coderhouse">
+                                        <h4>Análisis de Datos</h4>
+                                        <p>Coderhouse · 2026</p>
+                                        <span class="cert-badge">Cursando</span>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-slide">
+                                    <div class="cert-card">
+                                        <img src="img/Proceso diploma.png" alt="Diploma E-commerce — Coderhouse">
+                                        <h4>E-commerce</h4>
+                                        <p>Coderhouse · 2026</p>
+                                        <span class="cert-badge">Cursando</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <button class="carousel-btn carousel-btn--prev" id="btnPrev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="carousel-btn carousel-btn--next" id="btnNext" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+                        <div class="carousel-dots" role="tablist">
+                            <button class="carousel-dot active" data-index="0" aria-label="Diapositiva 1" role="tab" aria-selected="true"></button>
+                            <button class="carousel-dot" data-index="1" aria-label="Diapositiva 2" role="tab" aria-selected="false"></button>
+                            <button class="carousel-dot" data-index="2" aria-label="Diapositiva 3" role="tab" aria-selected="false"></button>
+                            <button class="carousel-dot" data-index="3" aria-label="Diapositiva 4" role="tab" aria-selected="false"></button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Idiomas -->
+            <div class="idiomas-bloque">
+                <h3 class="bloque-titulo"><i class="fa-solid fa-language"></i> Idiomas</h3>
+                <div class="idiomas-grid">
+                    <div class="idioma-item">
+                        <div class="idioma-top">
+                            <span class="idioma-nombre">Español</span>
+                            <span class="idioma-nivel">Nativo</span>
+                        </div>
+                        <div class="idioma-barra"><div class="idioma-fill" style="width:100%"></div></div>
+                    </div>
+                    <div class="idioma-item">
+                        <div class="idioma-top">
+                            <span class="idioma-nombre">Inglés</span>
+                            <span class="idioma-nivel">B2 — Intermedio avanzado</span>
+                        </div>
+                        <div class="idioma-barra"><div class="idioma-fill" style="width:84%"></div></div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CONTACTO -->
+        <section class="seccion contacto-seccion" id="contacto">
+
+            <div class="sec-header">
+                <span class="sec-eyebrow">Hablemos</span>
+                <h2>Contacto</h2>
+                <p class="sec-desc">¿Tenés una oportunidad o querés saber más sobre mi perfil? Escribime o completá el formulario.</p>
+            </div>
+
+            <div class="contacto-layout">
+
+                <form class="form-contacto" id="formularioContacto" action="#" method="post" novalidate>
+
+                    <div class="form-grupo">
+                        <label for="nombre"><i class="fa-solid fa-user"></i> Nombre</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+                        <span class="error-msg" id="errorNombre"></span>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="email"><i class="fa-solid fa-envelope"></i> Email</label>
+                        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                        <span class="error-msg" id="errorEmail"></span>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="mensaje"><i class="fa-solid fa-comment"></i> Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribí tu mensaje acá..." required></textarea>
+                        <span class="error-msg" id="errorMensaje"></span>
+                    </div>
+
+                    <button type="submit" class="btn-dorado btn-form">
+                        <i class="fa-solid fa-paper-plane"></i> Enviar mensaje
+                    </button>
+
+                    <p class="form-status" id="formStatus"></p>
+
+                    <p class="form-aviso">
+                        Abierto a oportunidades en administración, análisis de datos y desarrollo web.
+                    </p>
+
+                </form>
+
+                <aside class="contacto-panel">
+
+                    <div class="panel-dato">
+                        <div class="panel-icono"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <p class="panel-label">Ubicación</p>
+                            <p class="panel-valor">Buenos Aires, Argentina</p>
+                        </div>
+                    </div>
+
+                    <div class="panel-dato">
+                        <div class="panel-icono"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <p class="panel-label">Email</p>
+                            <p class="panel-valor">sebastian.loiteguiytellez@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="panel-dato">
+                        <div class="panel-icono"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                        <div>
+                            <p class="panel-label">Teléfono</p>
+                            <p class="panel-valor">+54 9 11 xxxx-xxxx</p>
+                        </div>
+                    </div>
+
+                    <div class="panel-btns">
+                        <a href="https://wa.me/549XXXXXXXXXX" target="_blank" class="pbtn pbtn-wa">
+                            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <a href="https://www.linkedin.com/in/slytellez/" target="_blank" class="pbtn pbtn-li">
+                            <i class="fa-brands fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="mailto:sebastian.loiteguiytellez@gmail.com" class="pbtn pbtn-em">
+                            <i class="fa-solid fa-envelope"></i> Email
+                        </a>
+                    </div>
+
+                    <div class="panel-redes">
+                        <p class="redes-titulo">Seguime en redes</p>
+                        <div class="redes-iconos">
+                            <a href="https://www.linkedin.com/in/slytellez/" target="_blank" aria-label="LinkedIn" class="red-icon red-linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="https://wa.me/549XXXXXXXXXX" target="_blank" aria-label="WhatsApp" class="red-icon red-whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="https://github.com/" target="_blank" aria-label="GitHub" class="red-icon red-github"><i class="fa-brands fa-github"></i></a>
+                            <a href="mailto:sebastian.loiteguiytellez@gmail.com" aria-label="Email" class="red-icon red-email"><i class="fa-solid fa-envelope"></i></a>
+                        </div>
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <p class="footer-logo"><span>SL</span> Sebastián Loitegui</p>
+            <p class="footer-copy">&copy; 2026 · Todos los derechos reservados</p>
+            <div class="footer-redes">
+                <a href="https://www.linkedin.com/in/slytellez/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://github.com/" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="mailto:sebastian.loiteguiytellez@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <button id="btnVolverArriba" class="btn-top" aria-label="Volver arriba">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
