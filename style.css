@@ -10,10 +10,10 @@
     --navy-3:        #1C3050;
     --navy-borde:    rgba(212, 175, 128, 0.12);
     --gold:          #D4AF80;
-    --gold-claro:    #E8D5B0;
+    --gold-claro:    #aa8d67;
     --gold-oscuro:   #A07840;
     --texto-claro:   #E8E2D9;
-    --texto-medio:   #9BA8B5;
+    --texto-medio:   #828d97;
     --texto-oscuro:  #1C2B3A;
     --blanco:        #FFFFFF;
     --crema:         #F5F0E8;
@@ -96,7 +96,7 @@ nav a:hover::after { width: 100%; }
 /* ===== HERO ===== */
 .hero { position: relative; overflow: hidden; padding: 100px 10% 90px; background: var(--navy); }
 .hero::before { content: ""; position: absolute; left: 0; top: 15%; height: 70%; width: 2px; background: linear-gradient(180deg, transparent, var(--gold), transparent); opacity: 0.4; }
-.fondo-abstracto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.03; z-index: 0; pointer-events: none; }
+.fondo-abstracto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.09; z-index: 0; pointer-events: none; }
 .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 270px 1fr; gap: 70px; align-items: center; max-width: var(--max-w); margin: 0 auto; }
 .hero-foto { display: flex; justify-content: center; }
 .foto-marco { position: relative; width: 220px; height: 220px; border-radius: 50%; padding: 4px; background: linear-gradient(135deg, var(--gold), var(--gold-oscuro)); box-shadow: 0 0 0 8px rgba(212, 175, 128, 0.07), var(--sombra); animation: flotar 5s ease-in-out infinite; }
@@ -109,7 +109,7 @@ nav a:hover::after { width: 100%; }
 .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
 .hero-tags span { display: inline-flex; align-items: center; gap: 6px; background: rgba(212, 175, 128, 0.08); border: 1px solid rgba(212, 175, 128, 0.22); color: var(--gold-claro); padding: 6px 13px; border-radius: var(--radio-pill); font-size: 0.8rem; font-weight: 500; transition: background var(--trans), border-color var(--trans); }
 .hero-tags span:hover { background: rgba(212, 175, 128, 0.16); border-color: var(--gold); }
-.hero-p { color: var(--texto-medio); font-size: 0.95rem; line-height: 1.85; margin-bottom: 12px; }
+.hero-p { color: var(--texto-medio); font-size: 0.95rem; line-height: 1.85; margin-bottom: 12px; text-align: justify; }
 .hero-p strong { color: var(--gold-claro); font-weight: 600; }
 .hero-stats { display: flex; align-items: center; gap: 0; margin: 28px 0; padding: 22px 0; border-top: 1px solid var(--navy-borde); border-bottom: 1px solid var(--navy-borde); }
 .stat { flex: 1; text-align: center; transition: transform var(--trans); }

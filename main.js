@@ -2,12 +2,11 @@
    MAIN.JS — Sebastián Loitegui | Portafolio Final
    1. Menú hamburguesa
    2. Modo claro / oscuro
-   3. Reveal al hacer scroll
+   3. Reveal al hacer scroll (efecto CASCADA por grupos)
    4. Contador animado en stats
-   5. Validación del formulario
-   6. Botón volver arriba
-   7. Header scroll effect
-   8. Lightbox — click en imágenes de diplomas y certificaciones
+   5. Botón volver arriba
+   6. Header scroll effect
+   7. Lightbox — click en imágenes de diplomas y certificaciones
    ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -76,15 +75,45 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* =====================================================
-       3. REVEAL AL HACER SCROLL
-       No aplicamos a 'section' completa (evita bloquear clics).
+       3. REVEAL AL HACER SCROLL — efecto CASCADA
+       Las tarjetas de cada grupo (timeline, habilidades,
+       proyectos, educación, certificaciones, idiomas,
+       contacto) no aparecen todas juntas: entran una
+       detrás de otra con un pequeño delay progresivo,
+       como una cascada. Los títulos de sección y otros
+       elementos sueltos aparecen normal, sin cascada.
        ===================================================== */
-  const revealEls = document.querySelectorAll(
-    ".tl-card, .skill-card, .edu-card, .cert-card, " +
-      ".idioma-item, .proy-card, .sec-header, " +
-      ".est-bloque, .idiomas-bloque, .form-contacto, .contacto-panel",
+
+  // Selectores de GRUPOS: cada hijo directo entra escalonado
+  const gruposCascada = [
+    ".timeline > .tl-card",
+    ".skill-grid > .skill-card",
+    ".proy-grid > .proy-card",
+    ".edu-grid > .edu-card",
+    ".cert-grid > .cert-card",
+    ".idiomas-grid > .idioma-item",
+    ".contacto-acciones > .accion-btn",
+    ".contacto-datos > .dato-item",
+  ];
+
+  const PASO_DELAY = 0.09; // segundos entre cada elemento del grupo
+  const DELAY_MAX = 0.6; // tope para que grupos largos no tarden una eternidad
+
+  gruposCascada.forEach((selector) => {
+    document.querySelectorAll(selector).forEach((el, i) => {
+      el.classList.add("reveal");
+      el.style.transitionDelay = `${Math.min(i * PASO_DELAY, DELAY_MAX)}s`;
+    });
+  });
+
+  // Elementos sueltos: aparecen solos, sin cascada (delay 0)
+  const revealSolos = document.querySelectorAll(
+    ".sec-header, .est-bloque, .idiomas-bloque, .form-contacto, " +
+      ".contacto-panel, .contacto-mapa",
   );
-  revealEls.forEach((el) => el.classList.add("reveal"));
+  revealSolos.forEach((el) => el.classList.add("reveal"));
+
+  const revealEls = document.querySelectorAll(".reveal");
 
   if (prefersReducedMotion || !("IntersectionObserver" in window)) {
     revealEls.forEach((el) => el.classList.add("reveal-visible"));
@@ -139,9 +168,8 @@ document.addEventListener("DOMContentLoaded", () => {
     obsStats.observe(statsContainer);
   }
 
-
   /* =====================================================
-    5. BOTÓN VOLVER ARRIBA
+       5. BOTÓN VOLVER ARRIBA
        ===================================================== */
   const btnTop = document.getElementById("btnVolverArriba");
   let ticking = false;
@@ -163,7 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   /* =====================================================
-       7. HEADER SCROLL EFFECT
+       6. HEADER SCROLL EFFECT
        ===================================================== */
   const header = document.getElementById("header");
   window.addEventListener(
@@ -175,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   /* =====================================================
-       8. LIGHTBOX — diplomas y certificaciones
+       7. LIGHTBOX — diplomas y certificaciones
        Detecta clics en .edu-card img  y  .cert-img-wrap img
        ===================================================== */
   const lightbox = document.getElementById("lightbox");
@@ -195,15 +223,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!lightbox) return;
     lightbox.classList.remove("activo");
     body.style.overflow = "";
-    // Limpia el src después de que termina la transición
     setTimeout(() => {
       if (lightboxImg) lightboxImg.src = "";
     }, 300);
   }
 
-  // Delegación de eventos — funciona aunque el DOM cambie
   document.addEventListener("click", (e) => {
-    // Imagen de edu-card
     const eduImg = e.target.closest(".edu-card img");
     if (eduImg) {
       e.preventDefault();
@@ -211,7 +236,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Imagen dentro del wrapper de certificaciones
     const certImg = e.target.closest(".cert-img-wrap img");
     if (certImg) {
       e.preventDefault();
@@ -219,7 +243,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Click en el wrapper entero de cert también abre lightbox
     const certWrap = e.target.closest(".cert-img-wrap");
     if (certWrap) {
       const img = certWrap.querySelector("img");
@@ -232,10 +255,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   lightboxCerrar?.addEventListener("click", cerrarLightbox);
 
-  // Cierra al hacer click en el fondo oscuro
   lightbox?.addEventListener("click", (e) => {
     if (e.target === lightbox || e.target === lightboxImg) {
-      // Click en la imagen misma no cierra (solo el fondo)
       if (e.target !== lightboxImg) cerrarLightbox();
     }
   });
